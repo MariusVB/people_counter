@@ -43,8 +43,6 @@ ap.add_argument("-sc", "--show-cam", type=int, default=1,
 
 args = vars(ap.parse_args())
 
-print(args)
-
 # initialize the list of class labels MobileNet SSD was trained to
 # detect
 CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
@@ -278,7 +276,6 @@ while True:
 		writer.write(frame)
 
 	if args.get('show_cam', 1) == 1:
-		print(args.get('show_cam'))
 		# show the output frame
 		cv2.imshow("Frame", frame)
 		key = cv2.waitKey(1) & 0xFF
