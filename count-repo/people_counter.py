@@ -37,7 +37,7 @@ ap.add_argument("-s", "--skip-frames", type=int, default=30,
 	help="# of skip frames between detections")
 ap.add_argument("-l", "--line", type=str, default="horizontal", 
 	help="Should the crossing line be horizontal or vertical?")
-ap.add_argument("-sc", "--show-cam", type=bool, default=True,
+ap.add_argument("-sc", "--show-cam", type=int, default=1,
 	help="Should the video feed be shown?"
 )
 
@@ -275,13 +275,14 @@ while True:
 	if writer is not None:
 		writer.write(frame)
 
-	# show the output frame
-	cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
+	if args.get('show-cam', 1) == 1:
+		# show the output frame
+		cv2.imshow("Frame", frame)
+		key = cv2.waitKey(1) & 0xFF
 
-	# if the `q` key was pressed, break from the loop
-	if key == ord("q"):
-		break
+		# if the `q` key was pressed, break from the loop
+		if key == ord("q"):
+			break
 
 	# increment the total number of frames processed thus far and
 	# then update the FPS counter

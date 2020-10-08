@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:experimental
-FROM python:3.8
+FROM python:3.7-slim
 
 #--mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \ 
 RUN    apt update && \
@@ -11,9 +11,11 @@ RUN    apt update && \
     libopenblas-dev \
     liblapack-dev 
 
-RUN --mount=type=cache,target=/root/.cache/pip pip3 install --upgrade pip
-RUN --mount=type=cache,target=/root/.cache/pip pip3 install dlib \ 
-    opencv-python==4.3.0.38 \
+RUN pip3 install --upgrade pip
+RUN pip3 install scikit-build 
+RUN pip3 install \
+    dlib \ 
+    opencv-python \
     imutils \ 
     scipy 
 
