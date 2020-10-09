@@ -262,7 +262,7 @@ while True:
 
 	if lastTotal != totalUp-totalDown:
 		with open("people.csv", "a") as f:
-			f.write(f"{totalUp-totalDown},{time.time()}")
+			f.write(f"{totalUp-totalDown},{time.time()}\n")
 		print(f"Status is: {status}. Currently {totalUp-totalDown} people in the room.")
 
 	# loop over the info tuples and draw them on our frame
